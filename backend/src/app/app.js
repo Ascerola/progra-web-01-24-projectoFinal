@@ -3,7 +3,12 @@ const morgan = require('morgan');
 const routerProduct = require("../router/product.router");
 const routerUser = require("../router/user.router");
 
+
 const app = express();
+const cors = require('cors');
+
+// Allow all origins
+app.use(cors());
 
 app.use(morgan("dev"));
 app.use(express.json());

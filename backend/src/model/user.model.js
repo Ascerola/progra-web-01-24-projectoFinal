@@ -1,6 +1,6 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 require('dotenv').config();
-
+ 
 const sequelize = new Sequelize(
   process.env.DATABASE_NAME, 
   process.env.DATABASE_USER, 
@@ -9,9 +9,9 @@ const sequelize = new Sequelize(
   dialect: "mysql",
   port: process.env.DATABASE_PORT || 3306 // Default to 3306 if DATABASE_PORT is not set
 });
-
+ 
 class User extends Model {}
-
+ 
 User.init({
   user_id: {
     type: DataTypes.UUID,
@@ -51,7 +51,9 @@ User.init({
   // Optionally, you can add the following option to force the table to drop and recreate:
   // , { force: true }
 });
-
+ 
 sequelize.sync().then(() => {
   console.log('Database and tables created!');
 });
+
+module.exports = User;

@@ -1,7 +1,7 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
-
+ 
 require('dotenv').config();
-
+ 
 const sequelize = new Sequelize(
   process.env.DATABASE_NAME, 
   process.env.DATABASE_USER, 
@@ -10,9 +10,9 @@ const sequelize = new Sequelize(
   dialect: "mysql",
   port: process.env.DATABASE_PORT || 3306 // Default to 3306 if DATABASE_PORT is not set
 });
-
+ 
 class Product extends Model {}
-
+ 
 Product.init({
   product_id: {
     type: DataTypes.UUID,
@@ -39,7 +39,7 @@ Product.init({
   sequelize,
   modelName: 'Product'
 });
-
+ 
 sequelize.sync().then(() => {
   console.log('Database and tables created!');
 }).catch((error) => {
